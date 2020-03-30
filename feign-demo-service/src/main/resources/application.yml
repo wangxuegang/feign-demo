@@ -1,0 +1,19 @@
+server:
+  port: 8000
+  
+spring:  
+  application:
+    name: feign-service
+    
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+  client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5 # 默认为30秒
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9090/eureka     
